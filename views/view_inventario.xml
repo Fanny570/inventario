@@ -1,0 +1,171 @@
+<odoo>
+  <data>
+    
+
+     <!-- listado de productos -->
+    <record model="ir.ui.view" id="produc_list">
+      <field name="name">Productos list</field>
+      <field name="model">produc</field>
+      <field name="arch" type="xml">
+        <tree  decoration-danger= "estado_stock=='Sin stock'">
+          <field name="name"/>
+          <field name="categoria_id"/>
+          <field name="stock"/>
+          <field name="estado_stock" />
+          <field name="date_contract"/>
+        </tree>
+      </field>
+    </record>
+
+  
+    
+
+    <!-- detalle de productos -->
+    <record id="produc_view" model="ir.ui.view" >
+      <field name="name">Productos</field>
+      <field name="model">produc</field>
+      <field name="arch" type="xml">
+        <form string="Producto">
+          <sheet>
+            <div class="oe_read_only"> 
+                <h1 align="center">Detalle producto</h1> 
+            </div> 
+            <notebook>
+              <page string="Detalle producto" name="whiteboard">
+                <group col="4">
+                  <field name="name"/>
+                  <field name="date_contract"/>
+                </group>
+                <group col="4">
+                  <field name="categoria_id"/>
+                  <field name="encargado"/>
+                </group>
+                <group>
+                    <field name="descripcion"/>
+                  </group>
+              </page>
+              <page string="Stock" name="second_page">
+                  <group >
+                    <field name="stock"/>
+                    <field name="stock_minimo"/>
+                    <field name="stock_maximo"/>
+                  </group>
+                  
+              </page>
+            </notebook>
+
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+        <!-- listado de categorias -->
+    <record model="ir.ui.view" id="cat_list">
+      <field name="name">Categorias list</field>
+      <field name="model">cat</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="total_categorias"/>
+
+        </tree>
+      </field>
+    </record>
+
+        <!-- detalle del formulario de categorias -->
+    <record id="cat_view" model="ir.ui.view" >
+      <field name="name">Categorias</field>
+      <field name="model">cat</field>
+      <field name="arch" type="xml">
+        <form string="Categorias">
+          <sheet>
+              <group >
+                <field name="name"/>
+              </group>
+              <Separator string="Productos"/>
+              <group >
+                <field name="categoria_ids" nolabel="1">
+                  <tree string="Productos" >
+                    <field name="name"/>
+                    <field name="categoria_id"/>
+                    <field name="stock"/>
+                    <field name="estado_stock"/>
+                    <field name="date_contract"/> 
+                  </tree>
+                </field>
+              </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    
+
+
+
+    
+    
+
+
+      <!-- accion de producto-->
+     <record model="ir.actions.act_window" id="produc_action_window">
+      <field name="name">Productos </field>
+      <field name="res_model">produc</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.server" id="produc_action_server">
+      <field name="name">producto server</field>
+      <field name="model_id" ref="model_produc"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+
+
+     <!-- accion de categoria -->
+     <record model="ir.actions.act_window" id="cat_action_window">
+      <field name="name">Categorias </field>
+      <field name="res_model">cat</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.server" id="cat_action_server">
+      <field name="name">solicitud server</field>
+      <field name="model_id" ref="model_cat"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+
+
+
+    
+     
+
+     <menuitem name="Inventario" id="inventario.menu_root"/>
+
+
+    <menuitem name="Productos" id="inventario.menu_productos" parent="inventario.menu_root"
+              action="produc_action_window"/>   
+
+    <menuitem name="Categorias" id="categoria_menu_product" parent="inventario.menu_root"
+              action="cat_action_window"/>
+    
+
+        
+   
+  </data>
+</odoo>
