@@ -27,33 +27,31 @@
       <field name="arch" type="xml">
         <form string="Producto">
           <sheet>
-            <div class="oe_read_only"> 
-                <h1 align="center">Detalle producto</h1> 
-            </div> 
+            <Separator string="Detalle producto"/>
+            <Separator/>
+            <field name="imagen" widget="image" class="oe_avatar"/>
+            <div class="oe_title">
+              <label for="name" class="oe_edit_only"/>
+              <h1><field name="name"/></h1>
+            </div>
+            <group col="4">
+              <field name="date_contract"/>
+              <field name="encargado"/>
+            </group>
+            <group>
+              <field name="categoria_id"/>
+            </group>
+            <Separator string="Stock"/>
+            <group>
+              <field name="stock"/>
+              <field name="stock_minimo"/>
+              <field name="stock_maximo"/>
+            </group> 
             <notebook>
-              <page string="Detalle producto" name="whiteboard">
-                <group col="4">
-                  <field name="name"/>
-                  <field name="date_contract"/>
-                </group>
-                <group col="4">
-                  <field name="categoria_id"/>
-                  <field name="encargado"/>
-                </group>
-                <group>
-                    <field name="descripcion"/>
-                  </group>
+              <page string="Descripción" name="Descripción">
+                <field name="descripcion"/>
               </page>
-              <page string="Stock" name="second_page">
-                  <group >
-                    <field name="stock"/>
-                    <field name="stock_minimo"/>
-                    <field name="stock_maximo"/>
-                  </group>
-                  
-              </page>
-            </notebook>
-
+            </notebook>     
           </sheet>
         </form>
       </field>

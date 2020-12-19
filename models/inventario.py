@@ -24,17 +24,19 @@ class Productos(models.Model):
     _name = 'produc'
 
     name= fields.Char(string="Nombre",required= True)
-    date_contract = fields.Date('Fecha de creación', default=fields.Date.context_today, required=False, readonly=False, select=True)
+    date_contract = fields.Date('Fecha de creación', default=fields.Date.context_today, readonly=True, select=True)
     stock= fields.Integer(string="Stock",required= True)
     stock_minimo= fields.Integer(string="Árticulos minimos",required= True)
     stock_maximo= fields.Integer(string="Árticulos maximos",required= True)
-    stock
+
     encargado= fields.Char(string="Encargado",required= True)
     descripcion= fields.Text(string="Descripcion")
     
     estado_stock= fields.Text(string="Estado stock",compute="_estado_de_stock")
 
     categoria_id = fields.Many2one('cat',string="Categoria",required= True)
+    
+    imagen=fields.Binary(string="producto")
     
     @api.one
     def _estado_de_stock(self):

@@ -7,7 +7,7 @@ class Solicitud(models.Model):
 
         name_id = fields.Many2one('produc',string="Nombre",required= True)
         cant= fields.Integer(string="Cantidad",required= True)
-        date_solicitud = fields.Date('Fecha de solicitud', default=fields.Date.context_today, required=False, readonly=False, select=True)
+        date_solicitud = fields.Date('Fecha de solicitud', default=fields.Date.context_today, readonly=True, select=True)
         estado = fields.Selection(string='Estado', selection=[('a', 'Pedido pendiente'),
                                                             ('b', 'Pedido realizado'), 
                                                             ('c', 'Pedido recibido'),

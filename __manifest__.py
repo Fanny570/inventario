@@ -26,6 +26,7 @@
         'security/ir.model.access.csv',
         'views/view_inventario.xml',
         'views/view_solicitud.xml',
+        'report/productos_reporte.xml',
 
     ],
     # only loaded in demonstration mode

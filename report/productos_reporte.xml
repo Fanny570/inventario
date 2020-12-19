@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report id="action_reporte_inventario"
+                string="Productos"
+                model="produc"
+                report_type="qweb-pdf"
+                name="inventario.reporte_inventario_template"/>
+
+        <template id="reporte_inventario_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h1>Productos</h1>
+                        <table>
+                            <th>
+                                <td>Nombre</td>
+                                <td>Fecha de creación</td>
+                                <td>Stock</td>
+                                <td>Categoria</td>
+                            </th>
+                            <t t-foreach="docs" t-as="product">
+                                <tr>
+                                    <td><span t-field="product.name"/></td>
+                                    <td><span t-field="product.date_contract"/></td>
+                                    <td><span t-field="product.stock"/></td>
+                                    <td><span t-field="product.categoria_id"/></td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+                </t>  
+            </t>        
+        </template>
+    </data>
+</odoo>
