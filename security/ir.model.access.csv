@@ -1,6 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_produc,produc,model_produc,,1,1,1,1
 access_cat,cat,model_cat,,1,1,1,1
-access_solcomp,solcomp,model_solcomp,,1,1,1,1
+access_solicitar,solicitar,model_solicitar,,1,1,1,1
+
 
 

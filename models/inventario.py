@@ -24,6 +24,7 @@ class Productos(models.Model):
     _name = 'produc'
 
     name= fields.Char(string="Nombre",required= True)
+
     date_contract = fields.Date('Fecha de creación', default=fields.Date.context_today, readonly=True, select=True)
     stock= fields.Integer(string="Stock",required= True)
     stock_minimo= fields.Integer(string="Árticulos minimos",required= True)
@@ -37,6 +38,7 @@ class Productos(models.Model):
     categoria_id = fields.Many2one('cat',string="Categoria",required= True)
     
     imagen=fields.Binary(string="producto")
+
     
     @api.one
     def _estado_de_stock(self):
