@@ -27,6 +27,7 @@
         'views/view_inventario.xml',
         'views/view_solicitud.xml',
         'report/productos_reporte.xml',
+        'report/categoria_reporte.xml',
 
     ],
     # only loaded in demonstration mode
