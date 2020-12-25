@@ -27,13 +27,13 @@
                                 
                             </thead>
                             <tbody>
-                                <t t-foreach="docs" t-as="product">
+                                <t t-foreach="docs" t-as="produc">
                                     <tr>
-                                        <td ><span t-field="product.name"/></td>
-                                        <td class="text-center"><span t-field="product.categoria_id"/></td>                                     
-                                        <td class="text-center"><span t-field="product.stock"/></td>
-                                        <td class="text-center"><span t-field="product.stock_minimo"/></td>
-                                        <td class="text-center"><span t-field="product.date_contract"/></td>
+                                        <td ><span t-field="produc.name"/></td>
+                                        <td class="text-center"><span t-field="produc.categoria_id"/></td>                                     
+                                        <td class="text-center"><span t-field="produc.stock"/></td>
+                                        <td class="text-center"><span t-field="produc.stock_minimo"/></td>
+                                        <td class="text-center"><span t-field="produc.date_contract"/></td>
                                     </tr>
                                 </t>
                             </tbody>

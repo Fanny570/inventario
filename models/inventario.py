@@ -9,6 +9,7 @@ class Categoria(models.Model):
     _name = 'cat'
 
     name= fields.Char(string="Categoría",required= True)
+    
     encargado_cat=fields.Char(string="Encargado",required= True)
     
     categoria_ids= fields.One2many(
@@ -27,16 +28,16 @@ class Categoria(models.Model):
 
 class Productos(models.Model):
     _name = 'produc'
-
+    
     name= fields.Char(string="Nombre",required= True)
 
     date_contract = fields.Date('Fecha de creación', default=fields.Date.context_today, readonly=True, select=True)
     
-    stock= fields.Integer(string="Stock",required= True)
-    stock_minimo= fields.Integer(string="Árticulos mínimo",required= True)
-    stock_maximo= fields.Integer(string="Árticulos máximo")
+    stock = fields.Integer(string="Stock",required= True)
+    stock_minimo = fields.Integer(string="Árticulos mínimo",required= True)
+    stock_maximo = fields.Integer(string="Árticulos máximo")
   
-    descripcion= fields.Text(string="Descripcion")
+    descripcion = fields.Text(string="Descripcion")
     
     estado_stock= fields.Text(string="Estado stock",compute="_estado_de_stock")
 
@@ -46,6 +47,8 @@ class Productos(models.Model):
 
     _sql_constraints = [('name', 'unique(name)', 'Este producto ya existe')
                         ]
+
+            
     
     @api.one
     def _estado_de_stock(self):

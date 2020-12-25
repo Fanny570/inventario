@@ -3,7 +3,6 @@
 from odoo import models, fields, api
 
 
-        
 class Solicitudes(models.Model):
     _name = 'solicitar'
     
@@ -13,3 +12,5 @@ class Solicitudes(models.Model):
        'solcomp',
        'solicitud_id',
         string='Solicitudes')
+
+        
